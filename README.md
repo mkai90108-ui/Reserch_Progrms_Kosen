@@ -82,6 +82,10 @@ Reserch_Progrms_Kosen/
 この時分身ロボット側の制御にタブレットを用いた．今回使用した電動車いすWHILLは市販品のため，andriodとiosの専用アプリのみしか，外部からの入力を受け付けないしようとなっている．比較的開発がしやすいandroidで専用アプリを操作するアプリの開発と付随するシステムの開発を行った．androidのSDKでは，タッチ入力を自動で行えない仕様であるため，タッチ入力の代わりにマウス入力とするシステムにするため，マイコン2台を使用した．Raspberry Pi Picoは操作指令を受け取り，Pro microでマウス入力に変換を行う．
 
 ## UserSide
-操作側は，操作画面に操作画面とロボット側の映像を重ねて表示する
+操作側は，操作画面に操作画面とロボット側の映像を重ねて表示する．視線位置が
 !["V1の説明"](https://github.com/mkai90108-ui/Reserch_Progrms_Kosen/blob/main/images/imageV1_2.png)
+映像のやり取りはmicrosoft Teamsで行った．
+
 # V2
+高専専攻科時の特別研究時に作成したシステムの解説
+!["V1の説明"](https://github.com/mkai90108-ui/Reserch_Progrms_Kosen/blob/main/images/imageV2.png)
