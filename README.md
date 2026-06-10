@@ -101,6 +101,11 @@ Reserch_Progrms_Kosen/
 
 映像の送受信はPythonで実装した．
 
-# 研究実績
-- 1 森海, 柴里弘毅, 大塚弘文 
+# 研究発表実績
+- 1 森海, 柴里弘毅, 大塚弘文，視線入力を用いた分身ロボット台車部の遠隔制御，令和5年度（第14回）電気学会九州支部 高専研究講演会
+- 2 [森海, 柴里弘毅，分身ロボットの視線操縦システムについて，Japan AT フォーラム 2024，PS-18，](https://www.jatc.jp/kosen-at/at_forum2024/program.html)　[優秀賞](https://www.jatc.jp/kosen-at/at_forum2024/index.html)
+- 3 [Kai MORI, Koki SHIBASATO，Remote Control of Cart Platform for Alter Ego Robot by Gaze Input，2024 IEEE 13th Global Conference on Consumer Electronics](https://ieeexplore.ieee.org/document/10760806)
+- 4 [森海，柴里弘毅，分身ロボットの視線遠隔操縦インタフェースの考察，日本福祉工学会第28回学術講演会，2024，209](https://www.jswe.jp/event/program2024.pdf)
+- 5 [Kai MORI，Koki SHIBASATO，Design and Development of an Eye-Gaze Interface for an Alter Ego Robot，Proceedings of the 13th IIAE International Conference on Industrial Application Engineering 2025，Ps1-6](https://www2.ia-engineers.org/iciae2025/wp-content/uploads/ICIAE2025program.pdf)
+- 6 [森海, 松尾和典, 柴里弘毅，分身ロボットの移動に関する視線制御インタフェース，日本福祉工学会第29回学術講演会，2-b-3，2025](https://www.jswe.jp/past/20251129/program.html)
 
