@@ -101,6 +101,6 @@ Reserch_Progrms_Kosen/
 
 映像の送受信はPythonで実装した．
 
-
-
+# 研究実績
+- 1 森海, 柴里弘毅, 大塚弘文 
 
