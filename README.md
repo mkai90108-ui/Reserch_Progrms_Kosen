@@ -88,4 +88,19 @@ Reserch_Progrms_Kosen/
 
 # V2
 高専専攻科時の特別研究時に作成したシステムの解説
-!["V1の説明"](https://github.com/mkai90108-ui/Reserch_Progrms_Kosen/blob/main/images/imageV2.png)
+
+!["V2の説明"](https://github.com/mkai90108-ui/Reserch_Progrms_Kosen/blob/main/images/imageV2.png)
+
+## RobotSide
+視線入力インタフェースを改良するため，カメラの台数を増やした．
+
+## UserSide
+それに伴い操作画面の配置も映像に合わせて改良した．また，研究用のWHILLを今回から用いたためPythonベースでシステムの実装を行った．
+
+!["V2の説明"](https://github.com/mkai90108-ui/Reserch_Progrms_Kosen/blob/main/images/imageV2_2.png)
+
+映像の送受信はPythonで実装した．
+
+
+
+
