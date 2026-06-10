@@ -5,6 +5,509 @@
 今回は，分身ロボットの足回りとして電動車いすWHILLを用いることで，既存の分身ロボットよりも走破性を向上させた．
 視線入力はtobii pro nanoを用いた．
 
+#ファイル構成
+
+```
+Reserch_Progrms_Kosen/
+├── README.md
+├── TC_WHILL_for_Gaze/
+│   ├── V1/
+│   │   ├── RobotSide/
+│   │   │   ├── androidapp/
+│   │   │   │   └── Sotuken_ver1/
+│   │   │   │       ├── .gadle/
+│   │   │   │       │   ├── 8.0/
+│   │   │   │       │   │   ├── checksums/
+│   │   │   │       │   │   │   ├── checksums.lock
+│   │   │   │       │   │   │   ├── md5-checksums.bin
+│   │   │   │       │   │   │   └── sha1-checksums.bin
+│   │   │   │       │   │   ├── dependencies-accessors/
+│   │   │   │       │   │   │   ├── dependencies-accessors.lock
+│   │   │   │       │   │   │   └── gc.properties
+│   │   │   │       │   │   ├── executionHistory/
+│   │   │   │       │   │   │   ├── executionHistory.bin
+│   │   │   │       │   │   │   └── executionHistory.lock
+│   │   │   │       │   │   ├── fileChanges/
+│   │   │   │       │   │   │   └── last-build.bin
+│   │   │   │       │   │   ├── fileHashes/
+│   │   │   │       │   │   │   ├── fileHashes.bin
+│   │   │   │       │   │   │   ├── fileHashes.lock
+│   │   │   │       │   │   │   └── resourceHashesCache.bin
+│   │   │   │       │   │   └── gc.properties
+│   │   │   │       │   ├── buildOutputCleanup/
+│   │   │   │       │   │   ├── buildOutputCleanup.lock
+│   │   │   │       │   │   ├── cache.properties
+│   │   │   │       │   │   └── outputFiles.bin
+│   │   │   │       │   ├── file-system.probe
+│   │   │   │       │   └── vcs-1/
+│   │   │   │       │       └── gc.properties
+│   │   │   │       ├── .idea/
+│   │   │   │       │   ├── compiler.xml
+│   │   │   │       │   ├── gradle.xml
+│   │   │   │       │   ├── kotlinc.xml
+│   │   │   │       │   ├── misc.xml
+│   │   │   │       │   └── workspace.xml
+│   │   │   │       ├── app/
+│   │   │   │       │   ├── build.gradle.kts
+│   │   │   │       │   ├── build/
+│   │   │   │       │   │   ├── intermediates/
+│   │   │   │       │   │   │   ├── aa
+│   │   │   │       │   │   │   ├── annotation_processor_list/
+│   │   │   │       │   │   │   │   ├── debug/
+│   │   │   │       │   │   │   │   │   └── annotationProcessors.json
+│   │   │   │       │   │   │   │   └── release/
+│   │   │   │       │   │   │   │       └── annotationProcessors.json
+│   │   │   │       │   │   │   ├── apk_ide_redirect_file/
+│   │   │   │       │   │   │   │   ├── debug/
+│   │   │   │       │   │   │   │   │   └── redirect.txt
+│   │   │   │       │   │   │   │   └── release/
+│   │   │   │       │   │   │   │       └── redirect.txt
+│   │   │   │       │   │   │   ├── app_metadata/
+│   │   │   │       │   │   │   │   ├── debug/
+│   │   │   │       │   │   │   │   │   └── app-metadata.properties
+│   │   │   │       │   │   │   │   └── release/
+│   │   │   │       │   │   │   │       └── app-metadata.properties
+│   │   │   │       │   │   │   ├── binary_art_profile/
+│   │   │   │       │   │   │   │   └── release/
+│   │   │   │       │   │   │   │       └── baseline.prof
+│   │   │   │       │   │   │   ├── binary_art_profile_metadata/
+│   │   │   │       │   │   │   │   └── release/
+│   │   │   │       │   │   │   │       └── baseline.profm
+│   │   │   │       │   │   │   ├── compatible_screen_manifest/
+│   │   │   │       │   │   │   │   ├── debug/
+│   │   │   │       │   │   │   │   │   └── output-metadata.json
+│   │   │   │       │   │   │   │   └── release/
+│   │   │   │       │   │   │   │       └── output-metadata.json
+│   │   │   │       │   │   │   ├── compile_and_runtime_not_namespaced_r_class_jar/
+│   │   │   │       │   │   │   │   ├── debug/
+│   │   │   │       │   │   │   │   │   └── R.jar
+│   │   │   │       │   │   │   │   └── release/
+│   │   │   │       │   │   │   │       └── R.jar
+│   │   │   │       │   │   │   ├── default_proguard_files/
+│   │   │   │       │   │   │   │   └── global/
+│   │   │   │       │   │   │   │       ├── proguard-android-optimize.txt-8.1.1
+│   │   │   │       │   │   │   │       ├── proguard-android.txt-8.1.1
+│   │   │   │       │   │   │   │       └── proguard-defaults.txt-8.1.1
+│   │   │   │       │   │   │   ├── desugar_graph/
+│   │   │   │       │   │   │   │   ├── debug/
+│   │   │   │       │   │   │   │   │   └── out/
+│   │   │   │       │   │   │   │   │       └── currentProject/
+│   │   │   │       │   │   │   │   │           ├── dirs_bucket_0/
+│   │   │   │       │   │   │   │   │           │   └── graph.bin
+│   │   │   │       │   │   │   │   │           ├── dirs_bucket_1/
+│   │   │   │       │   │   │   │   │           │   └── graph.bin
+│   │   │   │       │   │   │   │   │           ├── dirs_bucket_2/
+│   │   │   │       │   │   │   │   │           │   └── graph.bin
+│   │   │   │       │   │   │   │   │           ├── dirs_bucket_3/
+│   │   │   │       │   │   │   │   │           │   └── graph.bin
+│   │   │   │       │   │   │   │   │           ├── jar_1de932b496ec16c33736fd5c890201bd72f8b1b4404bc18bafada73adf6a847d_bucket_0/
+│   │   │   │       │   │   │   │   │           │   └── graph.bin
+│   │   │   │       │   │   │   │   │           ├── jar_1de932b496ec16c33736fd5c890201bd72f8b1b4404bc18bafada73adf6a847d_bucket_1/
+│   │   │   │       │   │   │   │   │           │   └── graph.bin
+│   │   │   │       │   │   │   │   │           ├── jar_1de932b496ec16c33736fd5c890201bd72f8b1b4404bc18bafada73adf6a847d_bucket_2/
+│   │   │   │       │   │   │   │   │           │   └── graph.bin
+│   │   │   │       │   │   │   │   │           └── jar_1de932b496ec16c33736fd5c890201bd72f8b1b4404bc18bafada73adf6a847d_bucket_3/
+│   │   │   │       │   │   │   │   │               └── graph.bin
+│   │   │   │       │   │   │   │   └── release/
+│   │   │   │       │   │   │   │       └── out/
+│   │   │   │       │   │   │   │           └── currentProject/
+│   │   │   │       │   │   │   │               ├── dirs_bucket_0/
+│   │   │   │       │   │   │   │               │   └── graph.bin
+│   │   │   │       │   │   │   │               ├── dirs_bucket_1/
+│   │   │   │       │   │   │   │               │   └── graph.bin
+│   │   │   │       │   │   │   │               ├── dirs_bucket_2/
+│   │   │   │       │   │   │   │               │   └── graph.bin
+│   │   │   │       │   │   │   │               ├── dirs_bucket_3/
+│   │   │   │       │   │   │   │               │   └── graph.bin
+│   │   │   │       │   │   │   │               ├── jar_9d274f152d276c11cc593d01a5ab57a98f7161828930b3d10fb0e13ca40fad6b_bucket_0/
+│   │   │   │       │   │   │   │               │   └── graph.bin
+│   │   │   │       │   │   │   │               ├── jar_9d274f152d276c11cc593d01a5ab57a98f7161828930b3d10fb0e13ca40fad6b_bucket_1/
+│   │   │   │       │   │   │   │               │   └── graph.bin
+│   │   │   │       │   │   │   │               ├── jar_9d274f152d276c11cc593d01a5ab57a98f7161828930b3d10fb0e13ca40fad6b_bucket_2/
+│   │   │   │       │   │   │   │               │   └── graph.bin
+│   │   │   │       │   │   │   │               └── jar_9d274f152d276c11cc593d01a5ab57a98f7161828930b3d10fb0e13ca40fad6b_bucket_3/
+│   │   │   │       │   │   │   │                   └── graph.bin
+│   │   │   │       │   │   │   ├── dex/
+│   │   │   │       │   │   │   │   ├── debug/
+│   │   │   │       │   │   │   │   │   ├── mergeExtDexDebug/
+│   │   │   │       │   │   │   │   │   │   └── classes.dex
+│   │   │   │       │   │   │   │   │   └── mergeProjectDexDebug/
+│   │   │   │       │   │   │   │   │       ├── 0/
+│   │   │   │       │   │   │   │   │       │   └── classes.dex
+│   │   │   │       │   │   │   │   │       └── 10/
+│   │   │   │       │   │   │   │   │           └── classes.dex
+│   │   │   │       │   │   │   │   └── release/
+│   │   │   │       │   │   │   │       └── mergeDexRelease/
+│   │   │   │       │   │   │   │           └── classes.dex
+│   │   │   │       │   │   │   ├── dex_archive_input_jar_hashes/
+│   │   │   │       │   │   │   │   ├── debug/
+│   │   │   │       │   │   │   │   │   └── out
+│   │   │   │       │   │   │   │   └── release/
+│   │   │   │       │   │   │   │       └── out
+│   │   │   │       │   │   │   ├── dex_number_of_buckets_file/
+│   │   │   │       │   │   │   │   ├── debug/
+│   │   │   │       │   │   │   │   │   └── out
+│   │   │   │       │   │   │   │   └── release/
+│   │   │   │       │   │   │   │       └── out
+│   │   │   │       │   │   │   └── external_libs_dex/
+│   │   │   │       │   │   │       └── release/
+│   │   │   │       │   │   │           └── mergeExtDexRelease/
+│   │   │   │       │   │   │               └── classes.dex
+│   │   │   │       │   │   ├── kotlin/
+│   │   │   │       │   │   │   ├── compileDebugKotlin/
+│   │   │   │       │   │   │   │   ├── cacheable/
+│   │   │   │       │   │   │   │   │   ├── caches-jvm/
+│   │   │   │       │   │   │   │   │   │   ├── inputs/
+│   │   │   │       │   │   │   │   │   │   │   ├── source-to-output.tab
+│   │   │   │       │   │   │   │   │   │   │   ├── source-to-output.tab.keystream
+│   │   │   │       │   │   │   │   │   │   │   ├── source-to-output.tab.keystream.len
+│   │   │   │       │   │   │   │   │   │   │   ├── source-to-output.tab.len
+│   │   │   │       │   │   │   │   │   │   │   ├── source-to-output.tab.values.at
+│   │   │   │       │   │   │   │   │   │   │   ├── source-to-output.tab_i
+│   │   │   │       │   │   │   │   │   │   │   └── source-to-output.tab_i.len
+│   │   │   │       │   │   │   │   │   │   ├── jvm/
+│   │   │   │       │   │   │   │   │   │   │   └── kotlin/
+│   │   │   │       │   │   │   │   │   │   │       ├── class-attributes.tab
+│   │   │   │       │   │   │   │   │   │   │       ├── class-attributes.tab.keystream
+│   │   │   │       │   │   │   │   │   │   │       ├── class-attributes.tab.keystream.len
+│   │   │   │       │   │   │   │   │   │   │       ├── class-attributes.tab.len
+│   │   │   │       │   │   │   │   │   │   │       ├── class-attributes.tab.values.at
+│   │   │   │       │   │   │   │   │   │   │       ├── class-attributes.tab_i
+│   │   │   │       │   │   │   │   │   │   │       ├── class-attributes.tab_i.len
+│   │   │   │       │   │   │   │   │   │   │       ├── class-fq-name-to-source.tab
+│   │   │   │       │   │   │   │   │   │   │       ├── class-fq-name-to-source.tab.keystream
+│   │   │   │       │   │   │   │   │   │   │       ├── class-fq-name-to-source.tab.keystream.len
+│   │   │   │       │   │   │   │   │   │   │       ├── class-fq-name-to-source.tab.len
+│   │   │   │       │   │   │   │   │   │   │       ├── class-fq-name-to-source.tab.values.at
+│   │   │   │       │   │   │   │   │   │   │       ├── class-fq-name-to-source.tab_i
+│   │   │   │       │   │   │   │   │   │   │       ├── class-fq-name-to-source.tab_i.len
+│   │   │   │       │   │   │   │   │   │   │       ├── constants.tab
+│   │   │   │       │   │   │   │   │   │   │       ├── constants.tab.keystream
+│   │   │   │       │   │   │   │   │   │   │       ├── constants.tab.keystream.len
+│   │   │   │       │   │   │   │   │   │   │       ├── constants.tab.len
+│   │   │   │       │   │   │   │   │   │   │       ├── constants.tab.values.at
+│   │   │   │       │   │   │   │   │   │   │       ├── constants.tab_i
+│   │   │   │       │   │   │   │   │   │   │       ├── constants.tab_i.len
+│   │   │   │       │   │   │   │   │   │   │       ├── internal-name-to-source.tab
+│   │   │   │       │   │   │   │   │   │   │       ├── internal-name-to-source.tab.keystream
+│   │   │   │       │   │   │   │   │   │   │       ├── internal-name-to-source.tab.keystream.len
+│   │   │   │       │   │   │   │   │   │   │       ├── internal-name-to-source.tab.len
+│   │   │   │       │   │   │   │   │   │   │       ├── internal-name-to-source.tab.values.at
+│   │   │   │       │   │   │   │   │   │   │       ├── internal-name-to-source.tab_i
+│   │   │   │       │   │   │   │   │   │   │       ├── internal-name-to-source.tab_i.len
+│   │   │   │       │   │   │   │   │   │   │       ├── proto.tab
+│   │   │   │       │   │   │   │   │   │   │       ├── proto.tab.keystream
+│   │   │   │       │   │   │   │   │   │   │       ├── proto.tab.keystream.len
+│   │   │   │       │   │   │   │   │   │   │       ├── proto.tab.len
+│   │   │   │       │   │   │   │   │   │   │       ├── proto.tab.values.at
+│   │   │   │       │   │   │   │   │   │   │       ├── proto.tab_i
+│   │   │   │       │   │   │   │   │   │   │       ├── proto.tab_i.len
+│   │   │   │       │   │   │   │   │   │   │       ├── source-to-classes.tab
+│   │   │   │       │   │   │   │   │   │   │       ├── source-to-classes.tab.keystream
+│   │   │   │       │   │   │   │   │   │   │       ├── source-to-classes.tab.keystream.len
+│   │   │   │       │   │   │   │   │   │   │       ├── source-to-classes.tab.len
+│   │   │   │       │   │   │   │   │   │   │       ├── source-to-classes.tab.values.at
+│   │   │   │       │   │   │   │   │   │   │       ├── source-to-classes.tab_i
+│   │   │   │       │   │   │   │   │   │   │       ├── source-to-classes.tab_i.len
+│   │   │   │       │   │   │   │   │   │   │       ├── subtypes.tab
+│   │   │   │       │   │   │   │   │   │   │       ├── subtypes.tab.keystream
+│   │   │   │       │   │   │   │   │   │   │       ├── subtypes.tab.keystream.len
+│   │   │   │       │   │   │   │   │   │   │       ├── subtypes.tab.len
+│   │   │   │       │   │   │   │   │   │   │       ├── subtypes.tab.values.at
+│   │   │   │       │   │   │   │   │   │   │       ├── subtypes.tab_i
+│   │   │   │       │   │   │   │   │   │   │       ├── subtypes.tab_i.len
+│   │   │   │       │   │   │   │   │   │   │       ├── supertypes.tab
+│   │   │   │       │   │   │   │   │   │   │       ├── supertypes.tab.keystream
+│   │   │   │       │   │   │   │   │   │   │       ├── supertypes.tab.keystream.len
+│   │   │   │       │   │   │   │   │   │   │       ├── supertypes.tab.len
+│   │   │   │       │   │   │   │   │   │   │       ├── supertypes.tab.values.at
+│   │   │   │       │   │   │   │   │   │   │       ├── supertypes.tab_i
+│   │   │   │       │   │   │   │   │   │   │       └── supertypes.tab_i.len
+│   │   │   │       │   │   │   │   │   │   └── lookups/
+│   │   │   │       │   │   │   │   │   │       ├── counters.tab
+│   │   │   │       │   │   │   │   │   │       ├── file-to-id.tab
+│   │   │   │       │   │   │   │   │   │       ├── file-to-id.tab.keystream
+│   │   │   │       │   │   │   │   │   │       ├── file-to-id.tab.keystream.len
+│   │   │   │       │   │   │   │   │   │       ├── file-to-id.tab.len
+│   │   │   │       │   │   │   │   │   │       ├── file-to-id.tab.values.at
+│   │   │   │       │   │   │   │   │   │       ├── file-to-id.tab_i
+│   │   │   │       │   │   │   │   │   │       ├── file-to-id.tab_i.len
+│   │   │   │       │   │   │   │   │   │       ├── id-to-file.tab
+│   │   │   │       │   │   │   │   │   │       ├── id-to-file.tab.keystream
+│   │   │   │       │   │   │   │   │   │       ├── id-to-file.tab.keystream.len
+│   │   │   │       │   │   │   │   │   │       ├── id-to-file.tab.len
+│   │   │   │       │   │   │   │   │   │       ├── id-to-file.tab.values.at
+│   │   │   │       │   │   │   │   │   │       ├── id-to-file.tab_i
+│   │   │   │       │   │   │   │   │   │       ├── id-to-file.tab_i.len
+│   │   │   │       │   │   │   │   │   │       ├── lookups.tab
+│   │   │   │       │   │   │   │   │   │       ├── lookups.tab.keystream
+│   │   │   │       │   │   │   │   │   │       ├── lookups.tab.keystream.len
+│   │   │   │       │   │   │   │   │   │       ├── lookups.tab.len
+│   │   │   │       │   │   │   │   │   │       ├── lookups.tab.values.at
+│   │   │   │       │   │   │   │   │   │       ├── lookups.tab_i
+│   │   │   │       │   │   │   │   │   │       └── lookups.tab_i.len
+│   │   │   │       │   │   │   │   │   └── last-build.bin
+│   │   │   │       │   │   │   │   ├── classpath-snapshot/
+│   │   │   │       │   │   │   │   │   └── shrunk-classpath-snapshot.bin
+│   │   │   │       │   │   │   │   └── local-state/
+│   │   │   │       │   │   │   │       └── build-history.bin
+│   │   │   │       │   │   │   └── compileReleaseKotlin/
+│   │   │   │       │   │   │       ├── cacheable/
+│   │   │   │       │   │   │       │   ├── caches-jvm/
+│   │   │   │       │   │   │       │   │   ├── inputs/
+│   │   │   │       │   │   │       │   │   │   ├── source-to-output.tab
+│   │   │   │       │   │   │       │   │   │   ├── source-to-output.tab.keystream
+│   │   │   │       │   │   │       │   │   │   ├── source-to-output.tab.keystream.len
+│   │   │   │       │   │   │       │   │   │   ├── source-to-output.tab.len
+│   │   │   │       │   │   │       │   │   │   ├── source-to-output.tab.values.at
+│   │   │   │       │   │   │       │   │   │   ├── source-to-output.tab_i
+│   │   │   │       │   │   │       │   │   │   └── source-to-output.tab_i.len
+│   │   │   │       │   │   │       │   │   ├── jvm/
+│   │   │   │       │   │   │       │   │   │   └── kotlin/
+│   │   │   │       │   │   │       │   │   │       ├── class-attributes.tab
+│   │   │   │       │   │   │       │   │   │       ├── class-attributes.tab.keystream
+│   │   │   │       │   │   │       │   │   │       ├── class-attributes.tab.keystream.len
+│   │   │   │       │   │   │       │   │   │       ├── class-attributes.tab.len
+│   │   │   │       │   │   │       │   │   │       ├── class-attributes.tab.values.at
+│   │   │   │       │   │   │       │   │   │       ├── class-attributes.tab_i
+│   │   │   │       │   │   │       │   │   │       ├── class-attributes.tab_i.len
+│   │   │   │       │   │   │       │   │   │       ├── class-fq-name-to-source.tab
+│   │   │   │       │   │   │       │   │   │       ├── class-fq-name-to-source.tab.keystream
+│   │   │   │       │   │   │       │   │   │       ├── class-fq-name-to-source.tab.keystream.len
+│   │   │   │       │   │   │       │   │   │       ├── class-fq-name-to-source.tab.len
+│   │   │   │       │   │   │       │   │   │       ├── class-fq-name-to-source.tab.values.at
+│   │   │   │       │   │   │       │   │   │       ├── class-fq-name-to-source.tab_i
+│   │   │   │       │   │   │       │   │   │       ├── class-fq-name-to-source.tab_i.len
+│   │   │   │       │   │   │       │   │   │       ├── constants.tab
+│   │   │   │       │   │   │       │   │   │       ├── constants.tab.keystream
+│   │   │   │       │   │   │       │   │   │       ├── constants.tab.keystream.len
+│   │   │   │       │   │   │       │   │   │       ├── constants.tab.len
+│   │   │   │       │   │   │       │   │   │       ├── constants.tab.values.at
+│   │   │   │       │   │   │       │   │   │       ├── constants.tab_i
+│   │   │   │       │   │   │       │   │   │       ├── constants.tab_i.len
+│   │   │   │       │   │   │       │   │   │       ├── internal-name-to-source.tab
+│   │   │   │       │   │   │       │   │   │       ├── internal-name-to-source.tab.keystream
+│   │   │   │       │   │   │       │   │   │       ├── internal-name-to-source.tab.keystream.len
+│   │   │   │       │   │   │       │   │   │       ├── internal-name-to-source.tab.len
+│   │   │   │       │   │   │       │   │   │       ├── internal-name-to-source.tab.values.at
+│   │   │   │       │   │   │       │   │   │       ├── internal-name-to-source.tab_i
+│   │   │   │       │   │   │       │   │   │       ├── internal-name-to-source.tab_i.len
+│   │   │   │       │   │   │       │   │   │       ├── proto.tab
+│   │   │   │       │   │   │       │   │   │       ├── proto.tab.keystream
+│   │   │   │       │   │   │       │   │   │       ├── proto.tab.keystream.len
+│   │   │   │       │   │   │       │   │   │       ├── proto.tab.len
+│   │   │   │       │   │   │       │   │   │       ├── proto.tab.values.at
+│   │   │   │       │   │   │       │   │   │       ├── proto.tab_i
+│   │   │   │       │   │   │       │   │   │       ├── proto.tab_i.len
+│   │   │   │       │   │   │       │   │   │       ├── source-to-classes.tab
+│   │   │   │       │   │   │       │   │   │       ├── source-to-classes.tab.keystream
+│   │   │   │       │   │   │       │   │   │       ├── source-to-classes.tab.keystream.len
+│   │   │   │       │   │   │       │   │   │       ├── source-to-classes.tab.len
+│   │   │   │       │   │   │       │   │   │       ├── source-to-classes.tab.values.at
+│   │   │   │       │   │   │       │   │   │       ├── source-to-classes.tab_i
+│   │   │   │       │   │   │       │   │   │       ├── source-to-classes.tab_i.len
+│   │   │   │       │   │   │       │   │   │       ├── subtypes.tab
+│   │   │   │       │   │   │       │   │   │       ├── subtypes.tab.keystream
+│   │   │   │       │   │   │       │   │   │       ├── subtypes.tab.keystream.len
+│   │   │   │       │   │   │       │   │   │       ├── subtypes.tab.len
+│   │   │   │       │   │   │       │   │   │       ├── subtypes.tab.values.at
+│   │   │   │       │   │   │       │   │   │       ├── subtypes.tab_i
+│   │   │   │       │   │   │       │   │   │       ├── subtypes.tab_i.len
+│   │   │   │       │   │   │       │   │   │       ├── supertypes.tab
+│   │   │   │       │   │   │       │   │   │       ├── supertypes.tab.keystream
+│   │   │   │       │   │   │       │   │   │       ├── supertypes.tab.keystream.len
+│   │   │   │       │   │   │       │   │   │       ├── supertypes.tab.len
+│   │   │   │       │   │   │       │   │   │       ├── supertypes.tab.values.at
+│   │   │   │       │   │   │       │   │   │       ├── supertypes.tab_i
+│   │   │   │       │   │   │       │   │   │       └── supertypes.tab_i.len
+│   │   │   │       │   │   │       │   │   └── lookups/
+│   │   │   │       │   │   │       │   │       ├── counters.tab
+│   │   │   │       │   │   │       │   │       ├── file-to-id.tab
+│   │   │   │       │   │   │       │   │       ├── file-to-id.tab.keystream
+│   │   │   │       │   │   │       │   │       ├── file-to-id.tab.keystream.len
+│   │   │   │       │   │   │       │   │       ├── file-to-id.tab.len
+│   │   │   │       │   │   │       │   │       ├── file-to-id.tab.values.at
+│   │   │   │       │   │   │       │   │       ├── file-to-id.tab_i
+│   │   │   │       │   │   │       │   │       ├── file-to-id.tab_i.len
+│   │   │   │       │   │   │       │   │       ├── id-to-file.tab
+│   │   │   │       │   │   │       │   │       ├── id-to-file.tab.keystream
+│   │   │   │       │   │   │       │   │       ├── id-to-file.tab.keystream.len
+│   │   │   │       │   │   │       │   │       ├── id-to-file.tab.len
+│   │   │   │       │   │   │       │   │       ├── id-to-file.tab.values.at
+│   │   │   │       │   │   │       │   │       ├── id-to-file.tab_i
+│   │   │   │       │   │   │       │   │       ├── id-to-file.tab_i.len
+│   │   │   │       │   │   │       │   │       ├── lookups.tab
+│   │   │   │       │   │   │       │   │       ├── lookups.tab.keystream
+│   │   │   │       │   │   │       │   │       ├── lookups.tab.keystream.len
+│   │   │   │       │   │   │       │   │       ├── lookups.tab.len
+│   │   │   │       │   │   │       │   │       ├── lookups.tab.values.at
+│   │   │   │       │   │   │       │   │       ├── lookups.tab_i
+│   │   │   │       │   │   │       │   │       └── lookups.tab_i.len
+│   │   │   │       │   │   │       │   └── last-build.bin
+│   │   │   │       │   │   │       ├── classpath-snapshot/
+│   │   │   │       │   │   │       │   └── shrunk-classpath-snapshot.bin
+│   │   │   │       │   │   │       └── local-state/
+│   │   │   │       │   │   │           └── build-history.bin
+│   │   │   │       │   │   ├── kotlinToolingMetadata/
+│   │   │   │       │   │   │   └── kotlin-tooling-metadata.json
+│   │   │   │       │   │   ├── outputs/
+│   │   │   │       │   │   │   ├── apk/
+│   │   │   │       │   │   │   │   ├── debug/
+│   │   │   │       │   │   │   │   │   ├── app-debug.apk
+│   │   │   │       │   │   │   │   │   └── output-metadata.json
+│   │   │   │       │   │   │   │   └── release/
+│   │   │   │       │   │   │   │       ├── app-release-unsigned.apk
+│   │   │   │       │   │   │   │       └── output-metadata.json
+│   │   │   │       │   │   │   ├── logs/
+│   │   │   │       │   │   │   │   ├── manifest-merger-debug-report.txt
+│   │   │   │       │   │   │   │   └── manifest-merger-release-report.txt
+│   │   │   │       │   │   │   └── sdk-dependencies/
+│   │   │   │       │   │   │       └── release/
+│   │   │   │       │   │   │           └── sdkDependencies.txt
+│   │   │   │       │   │   └── tmp/
+│   │   │   │       │   │       └── kotlin-classes/
+│   │   │   │       │   │           ├── debug/
+│   │   │   │       │   │           │   ├── META-INF/
+│   │   │   │       │   │           │   │   └── app_debug.kotlin_module
+│   │   │   │       │   │           │   └── com/
+│   │   │   │       │   │           │       └── example/
+│   │   │   │       │   │           │           └── sotuken_ver1/
+│   │   │   │       │   │           │               ├── ConectUSB.class
+│   │   │   │       │   │           │               ├── MainActivity$onCreate$2$1.class
+│   │   │   │       │   │           │               ├── MainActivity.class
+│   │   │   │       │   │           │               ├── SerialManager$Companion.class
+│   │   │   │       │   │           │               ├── SerialManager.class
+│   │   │   │       │   │           │               ├── SocketCliant.class
+│   │   │   │       │   │           │               ├── SocketClient$Connect$2.class
+│   │   │   │       │   │           │               ├── SocketClient$close$2.class
+│   │   │   │       │   │           │               ├── SocketClient$socketread$1.class
+│   │   │   │       │   │           │               ├── SocketClient$socketread$bytesRead$1.class
+│   │   │   │       │   │           │               ├── SocketClient$socketread$inputStream$1.class
+│   │   │   │       │   │           │               ├── SocketClient$socketwrite$1.class
+│   │   │   │       │   │           │               ├── SocketClient$socketwrite$2.class
+│   │   │   │       │   │           │               ├── SocketClient$socketwrite$3.class
+│   │   │   │       │   │           │               ├── SocketClient$socketwrite$outputStream$1.class
+│   │   │   │       │   │           │               ├── SocketClient.class
+│   │   │   │       │   │           │               ├── SocketClient2$Companion.class
+│   │   │   │       │   │           │               ├── SocketClient2.class
+│   │   │   │       │   │           │               ├── TestService$onStartCommand$1.class
+│   │   │   │       │   │           │               ├── TestService.class
+│   │   │   │       │   │           │               └── VideoStreamer.class
+│   │   │   │       │   │           └── release/
+│   │   │   │       │   │               ├── META-INF/
+│   │   │   │       │   │               │   └── app_release.kotlin_module
+│   │   │   │       │   │               └── com/
+│   │   │   │       │   │                   └── example/
+│   │   │   │       │   │                       └── sotuken_ver1/
+│   │   │   │       │   │                           ├── ConectUSB.class
+│   │   │   │       │   │                           ├── MainActivity$onCreate$2$1.class
+│   │   │   │       │   │                           ├── MainActivity.class
+│   │   │   │       │   │                           ├── SerialManager$Companion.class
+│   │   │   │       │   │                           ├── SerialManager.class
+│   │   │   │       │   │                           ├── SocketCliant.class
+│   │   │   │       │   │                           ├── SocketClient$Connect$2.class
+│   │   │   │       │   │                           ├── SocketClient$close$2.class
+│   │   │   │       │   │                           ├── SocketClient$socketread$1.class
+│   │   │   │       │   │                           ├── SocketClient$socketread$bytesRead$1.class
+│   │   │   │       │   │                           ├── SocketClient$socketread$inputStream$1.class
+│   │   │   │       │   │                           ├── SocketClient$socketwrite$1.class
+│   │   │   │       │   │                           ├── SocketClient$socketwrite$2.class
+│   │   │   │       │   │                           ├── SocketClient$socketwrite$3.class
+│   │   │   │       │   │                           ├── SocketClient$socketwrite$outputStream$1.class
+│   │   │   │       │   │                           ├── SocketClient.class
+│   │   │   │       │   │                           ├── SocketClient2$Companion.class
+│   │   │   │       │   │                           ├── SocketClient2.class
+│   │   │   │       │   │                           ├── TestService$onStartCommand$1.class
+│   │   │   │       │   │                           ├── TestService.class
+│   │   │   │       │   │                           └── VideoStreamer.class
+│   │   │   │       │   ├── proguard-rules.pro
+│   │   │   │       │   └── src/
+│   │   │   │       │       ├── androidTest/
+│   │   │   │       │       │   └── java/
+│   │   │   │       │       │       └── com/
+│   │   │   │       │       │           └── example/
+│   │   │   │       │       │               └── sotuken_ver1/
+│   │   │   │       │       │                   └── ExampleInstrumentedTest.kt
+│   │   │   │       │       ├── main/
+│   │   │   │       │       │   ├── AndroidManifest.xml
+│   │   │   │       │       │   ├── java/
+│   │   │   │       │       │   │   └── com/
+│   │   │   │       │       │   │       └── example/
+│   │   │   │       │       │   │           └── sotuken_ver1/
+│   │   │   │       │       │   │               ├── ConectUSB.kt
+│   │   │   │       │       │   │               ├── MainActivity.kt
+│   │   │   │       │       │   │               ├── SocketClient.kt
+│   │   │   │       │       │   │               └── TestService.kt
+│   │   │   │       │       │   └── res/
+│   │   │   │       │       │       ├── drawable/
+│   │   │   │       │       │       │   ├── ic_launcher_background.xml
+│   │   │   │       │       │       │   └── ic_launcher_foreground.xml
+│   │   │   │       │       │       ├── layout/
+│   │   │   │       │       │       │   └── activity_main.xml
+│   │   │   │       │       │       ├── mipmap-anydpi/
+│   │   │   │       │       │       │   ├── ic_launcher.xml
+│   │   │   │       │       │       │   └── ic_launcher_round.xml
+│   │   │   │       │       │       ├── mipmap-hdpi/
+│   │   │   │       │       │       │   ├── ic_launcher.webp
+│   │   │   │       │       │       │   └── ic_launcher_round.webp
+│   │   │   │       │       │       ├── mipmap-mdpi/
+│   │   │   │       │       │       │   ├── ic_launcher.webp
+│   │   │   │       │       │       │   └── ic_launcher_round.webp
+│   │   │   │       │       │       ├── mipmap-xhdpi/
+│   │   │   │       │       │       │   ├── ic_launcher.webp
+│   │   │   │       │       │       │   └── ic_launcher_round.webp
+│   │   │   │       │       │       ├── mipmap-xxhdpi/
+│   │   │   │       │       │       │   ├── ic_launcher.webp
+│   │   │   │       │       │       │   └── ic_launcher_round.webp
+│   │   │   │       │       │       ├── mipmap-xxxhdpi/
+│   │   │   │       │       │       │   ├── ic_launcher.webp
+│   │   │   │       │       │       │   └── ic_launcher_round.webp
+│   │   │   │       │       │       ├── values-night/
+│   │   │   │       │       │       │   └── themes.xml
+│   │   │   │       │       │       ├── values/
+│   │   │   │       │       │       │   ├── colors.xml
+│   │   │   │       │       │       │   ├── strings.xml
+│   │   │   │       │       │       │   └── themes.xml
+│   │   │   │       │       │       └── xml/
+│   │   │   │       │       │           ├── backup_rules.xml
+│   │   │   │       │       │           ├── data_extraction_rules.xml
+│   │   │   │       │       │           └── device_filter.xml
+│   │   │   │       │       └── test/
+│   │   │   │       │           └── java/
+│   │   │   │       │               └── com/
+│   │   │   │       │                   └── example/
+│   │   │   │       │                       └── sotuken_ver1/
+│   │   │   │       │                           └── ExampleUnitTest.kt
+│   │   │   │       ├── build.gradle.kts
+│   │   │   │       ├── gradle.properties
+│   │   │   │       ├── gradle/
+│   │   │   │       │   └── wrapper/
+│   │   │   │       │       ├── gradle-wrapper.jar
+│   │   │   │       │       └── gradle-wrapper.properties
+│   │   │   │       ├── gradlew
+│   │   │   │       ├── gradlew.bat
+│   │   │   │       ├── local.properties
+│   │   │   │       └── settings.gradle.kts
+│   │   │   ├── promicro/
+│   │   │   │   └── promicro.ino
+│   │   │   └── raspberrypipico/
+│   │   │       ├── pipico1.ino
+│   │   │       └── pipico2.ino
+│   │   └── UserSide/
+│   │       └── UserControll.py
+│   └── V2/
+│       ├── RobotSide/
+│       │   ├── RobotAVSender.py
+│       │   └── RobotSystem.py
+│       └── UserSide/
+│           ├── UserAVReader.py
+│           └── UserControllV2.py
+└── images/
+    └── imageV1.png
+
+```
+
+
 # V1
 高専本科の卒研時に作成したシステムの解説
 !["V1の説明"](https://github.com/mkai90108-ui/Reserch_Progrms_Kosen/blob/main/images/imageV1.png)
