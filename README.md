@@ -5,7 +5,7 @@
 今回は，分身ロボットの足回りとして電動車いすWHILLを用いることで，既存の分身ロボットよりも走破性を向上させた．
 視線入力はtobii pro nanoを用いた．
 
-#ファイル構成
+# ファイル構成
 
 ```
 Reserch_Progrms_Kosen/
@@ -13,7 +13,7 @@ Reserch_Progrms_Kosen/
 ├── TC_WHILL_for_Gaze/
 │   ├── V1/
 │   │   ├── RobotSide/
-│   │   │   ├── androidapp/
+│   │   │   ├── androidapp/　#androidアプリ
 │   │   │   │   └── Sotuken_ver1/
 │   │   │   │       ├── .gadle/~
 │   │   │   │       ├── .idea/~
@@ -29,10 +29,10 @@ Reserch_Progrms_Kosen/
 │   │   │   │       │       │   │   └── com/
 │   │   │   │       │       │   │       └── example/
 │   │   │   │       │       │   │           └── sotuken_ver1/
-│   │   │   │       │       │   │               ├── ConectUSB.kt
-│   │   │   │       │       │   │               ├── MainActivity.kt
-│   │   │   │       │       │   │               ├── SocketClient.kt
-│   │   │   │       │       │   │               └── TestService.kt
+│   │   │   │       │       │   │               ├── ConectUSB.kt   #USBの接続確認
+│   │   │   │       │       │   │               ├── MainActivity.kt #メインのプログラム
+│   │   │   │       │       │   │               ├── SocketClient.kt #TCP/IP通信を行う
+│   │   │   │       │       │   │               └── TestService.kt #USBシリアル通信を行う
 │   │   │   │       │       │   └── res/~
 │   │   │   │       │       └── test/~
 │   │   │   │       ├── build.gradle.kts
@@ -43,19 +43,19 @@ Reserch_Progrms_Kosen/
 │   │   │   │       ├── local.properties
 │   │   │   │       └── settings.gradle.kts
 │   │   │   ├── promicro/
-│   │   │   │   └── promicro.ino
+│   │   │   │   └── promicro.ino #pro microのプログラム
 │   │   │   └── raspberrypipico/
-│   │   │       ├── pipico1.ino
+│   │   │       ├── pipico1.ino #Raspberry Pi nanoのプログラム
 │   │   │       └── pipico2.ino
 │   │   └── UserSide/
-│   │       └── UserControll.py
+│   │       └── UserControll.py #ユーザ側の操作プログラム
 │   └── V2/
 │       ├── RobotSide/
-│       │   ├── RobotAVSender.py
-│       │   └── RobotSystem.py
+│       │   ├── RobotAVSender.py #ロボット側の映像送受信プログラム
+│       │   └── RobotSystem.py #ロボット側の制御システム
 │       └── UserSide/
-│           ├── UserAVReader.py
-│           └── UserControllV2.py
+│           ├── UserAVReader.py #ユーザ側の映像送受信プログラム
+│           └── UserControllV2.py #ユーザ側の操作プログラム
 └── images/
     └── imageV1.png
 
@@ -63,6 +63,7 @@ Reserch_Progrms_Kosen/
 
 
 # V1
+## RobotSide
 高専本科の卒研時に作成したシステムの解説
 !["V1の説明"](https://github.com/mkai90108-ui/Reserch_Progrms_Kosen/blob/main/images/imageV1.png)
 
@@ -78,6 +79,6 @@ Reserch_Progrms_Kosen/
 
 ⑥は操作指令をWHILLの動作に変換する．
 
-この時分身ロボット側の制御にタブレットを用いた．今回使用した電動車いすWHILLは市販品の為，andriodとiosの専用アプリのみに
+この時分身ロボット側の制御にタブレットを用いた．今回使用した電動車いすWHILLは市販品のため，andriodとiosの専用アプリのみしか，外部からの入力を受け付けないしようとなっている．比較的開発がしやすいandroidで専用アプリを操作するアプリの開発と付随するシステムの開発を行った．androidのSDKでは，タッチ入力を自動で行えない仕様であるため，タッチ入力の代わりにマウス入力とするシステムにするため，マイコン2台を使用した．Raspberry Pi Picoは操作指令を受け取り，Pro microでマウス入力に変換を行う．
 
 # V2
