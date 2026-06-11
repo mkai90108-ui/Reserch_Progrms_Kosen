@@ -66,9 +66,7 @@ Reserch_Progrms_Kosen/
 高専本科の卒研時に作成したシステムの解説
 !["V1の説明"](https://github.com/mkai90108-ui/Reserch_Progrms_Kosen/blob/main/images/imageV1.png)
 
-```text
-!<img alt="V1の説明"　src="https://github.com/mkai90108-ui/Reserch_Progrms_Kosen/blob/main/images/imageV1.png" width="50%" />
-```text
+<img alt="V1の説明"　src="https://github.com/mkai90108-ui/Reserch_Progrms_Kosen/blob/main/images/imageV1.png" width="50%" >
 
 ①は拡張ディスプレイに操作画面とロボットの映像を表示する．
 
