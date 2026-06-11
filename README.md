@@ -84,6 +84,7 @@ Reserch_Progrms_Kosen/
 ## UserSide
 操作側は，操作画面に操作画面とロボット側の映像を重ねて表示する．視線位置が
 !["V1の説明"](https://github.com/mkai90108-ui/Reserch_Progrms_Kosen/blob/main/images/imageV1_2.png)
+<img alt="V1の説明"　src="{https://github.com/mkai90108-ui/Reserch_Progrms_Kosen/blob/main/images/imageV1_2.png}" width="50%" />
 映像のやり取りはmicrosoft Teamsで行った．
 
 # V2
