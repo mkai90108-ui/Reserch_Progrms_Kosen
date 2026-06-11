@@ -45,7 +45,7 @@ Reserch_Progrms_Kosen/
 │   │   │   ├── promicro/
 │   │   │   │   └── promicro.ino #pro microのプログラム
 │   │   │   └── raspberrypipico/
-│   │   │       ├── pipico1.ino #Raspberry Pi nanoのプログラム
+│   │   │       ├── pipico1.ino #Raspberry Pi picoのプログラム
 │   │   │       └── pipico2.ino
 │   │   └── UserSide/
 │   │       └── UserControll.py #ユーザ側の操作プログラム
